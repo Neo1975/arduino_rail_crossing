@@ -12,10 +12,10 @@ void setup(){
 }
 
 void loop(){
-  ledLeftRed.lightOn();
+  ledLeftRed.on();
   delay(blinkTime);
-  ledLeftRed.lightOff();
-  ledRightRed.lightOn();
+  ledLeftRed.off();
+  ledRightRed.on();
   delay(blinkTime);
-  ledRightRed.lightOff();
+  ledRightRed.off();
 }
