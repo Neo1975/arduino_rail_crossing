@@ -1,19 +1,26 @@
-#include "led.h"
+#include "button.h"
 
-Led::Led(int pin){
+void Button::init(byte pin, void (*pressedHandler)(Button src, Button::EventType eventType)) {
+  this->pressedHandler = pressedHandler;
   this->pin = pin;
+  pinMode(pin,INPUT);
+  currentStatus = false;
+  currentStatus = false;
 }
 
-void Led::init() {
-  pinMode(pin,OUTPUT);
-  digitalWrite(pin,LOW);
+byte Button::getPin(){
+  return pin;
 }
 
-void Led::lightOn(){
-  digitalWrite(this->pin,HIGH);
+void Button::update(){
+  prevStatus = currentStatus;
+  currentStatus = digitalRead(pin);
+  if (pressedHandler != NULL && currentStatus!=prevStatus){
+    pressedHandler(*this, currentStatus?PRESSED:RELEASED);
+  }
 }
 
-void Led::lightOff(){
-  digitalWrite(this->pin,LOW);
+bool Button::isPressed(){
+  return currentStatus;
 }
 

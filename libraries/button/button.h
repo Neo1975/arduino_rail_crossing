@@ -4,13 +4,20 @@
 #include "Arduino.h"
 
 class Button {
-private:  
-  int pin;
 public:
-  Button(int pin);
-  void init();
-  void lightOn();
-  void lightOff();
+  enum EventType { 
+    PRESSED = 1, 
+    RELEASED = 0
+  } ;
+  void init(byte pin, void (*handler)(Button src, Button::EventType eventType));
+  void update();
+  byte getPin();
+  bool isPressed();
+private:  
+  byte pin;
+  bool currentStatus;
+  bool prevStatus;
+  void (*pressedHandler)(Button src, Button::EventType eventType);
 };
 
 #endif
