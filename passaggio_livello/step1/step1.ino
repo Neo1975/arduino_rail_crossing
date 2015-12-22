@@ -3,12 +3,12 @@
 
 int blinkTime = 500;
 
-Led ledLeftRed(10);
-Led ledRightRed(4);
+Led ledLeftRed;
+Led ledRightRed;
 
 void setup(){
-  ledLeftRed.init();
-  ledRightRed.init();
+  ledLeftRed.init(10);
+  ledRightRed.init(4);
 }
 
 void loop(){

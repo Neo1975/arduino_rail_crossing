@@ -1,10 +1,8 @@
 #include "led.h"
 
-Led::Led(int pin){
-  this->pin = pin;
-}
 
-void Led::init() {
+void Led::init(byte pin) {
+  this->pin = pin;
   pinMode(pin,OUTPUT);
   digitalWrite(pin,LOW);
 }

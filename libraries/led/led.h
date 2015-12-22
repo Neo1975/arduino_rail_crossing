@@ -5,10 +5,9 @@
 
 class Led {
 private:  
-  int pin;
+  byte pin;
 public:
-  Led(int pin);
-  void init();
+  void init(byte pin);
   void on();
   void off();
 };

@@ -6,12 +6,12 @@
 bool pushingButton = false;
 bool blinking = false;
 
-Led ledLeftRed(10);
-Led ledRightRed(6);
+Led ledLeftRed;
+Led ledRightRed;
 
 void setup(){
-  ledLeftRed.init();
-  ledRightRed.init();
+  ledLeftRed.init(10);
+  ledRightRed.init(6);
   pinMode(13,INPUT);
   pinMode(12,INPUT);
 #ifdef DEGUB
